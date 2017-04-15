@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testSuite name="Test suite for JVM compressors"
+  xmlns="http://www.sun.com/japex/testSuite"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+>
+    <description><div xmlns=""><p>
+Micro-benchmark for testing performance of compressors on JVM platform
+</p></div></description>
+
+    <!-- Drivers; only use couple, so embed -->
+
+    <driverGroup name="javaDrivers" xmlns="http://www.sun.com/japex/testSuite"
+       xmlns:xi="http://www.w3.org/2001/XInclude">
+
+	   <!--
+  <driver name="jblosc,snappy(JNA)/block" normal="false">
+        <description><div xmlns=""><p>jblosc,snappy/JNA, block mode</p></div></description>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jblosc_snappy.jbloscDriver"/>
+  </driver>
+  -->
+<!--
+  <driver name="jblosc,lz4(JNA),1Thread/byte[]" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4(JNA),1Thread/byte[]</p></div></description>
+		<param name="nthreads" value="1"/>
+		<param name="compressor" value="lz4"/>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jblosc.jbloscDriver"/>
+  </driver>
+
+  <driver name="jblosc,lz4(JNA),4Thread/byte[]" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4(JNA),4Thread/byte[]</p></div></description>
+		<param name="nthreads" value="4" />
+		<param name="compressor" value="lz4" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jblosc.jbloscDriver"/>
+  </driver>
+-->
+<!--
+   <driver name="Memcpy,1Thread/byte[]" normal="false">
+        <description><div xmlns=""><p>Memcpy,1Thread/byte[]</p></div></description>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.memcpy.MemcpyDriver"/>
+  </driver>
+-->
+
+<!--
+   <driver name="jblosc,ztsd(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,ztsd(JNA),4Threads/DirectByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedZtsd"/>
+  </driver>
+
+  <driver name="jblosc,ztsd(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,ztsd(JNA),1Thread/Direct ByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverZtsd"/>
+  </driver>
+-->
+   <driver name="jblosc,zlib(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,zlib(JNA),4Threads/DirectByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedZlib"/>
+  </driver>
+
+  <driver name="jblosc,zlib(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,zlib(JNA),1Thread/Direct ByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverZlib"/>
+  </driver>
+
+   <driver name="jblosc,blosclz(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,blosclz(JNA),4Threads/DirectByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedBloscLz"/>
+  </driver>
+
+  <driver name="jblosc,blosclz(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,blosclz(JNA),1Thread/DirectByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverBloscLz"/>
+  </driver>
+  
+   <driver name="jblosc,lz4(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4(JNA),4Threads/Direct ByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreaded"/>
+  </driver>
+
+  <driver name="jblosc,lz4(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4(JNA),1Thread/Direct ByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriver"/>
+  </driver>
+  
+   <driver name="jblosc,lz4hc(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4hc(JNA),4Threads/DirectByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedLz4hc"/>
+  </driver>
+
+  <driver name="jblosc,lz4hc(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4hc(JNA),1Thread/Direct ByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverLz4hc"/>
+  </driver>
+
+  <!--
+   <driver name="jblosc,snappy(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,snappy(JNA),4Threads/DirectByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedSnappy"/>
+  </driver>
+
+  <driver name="jblosc,snappy(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,snappy(JNA),1Thread/Direct ByteBuffer</p></div></description>
+		<param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverSnappy"/>
+  </driver>
+  -->
+  
+  
+  
+<!-- 
+  <driver name="LZ4(JNI),1Thread/byte[]" normal="false">
+        <description><div xmlns=""><p>LZ4/JNI, block mode</p></div></description>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/lz4-jni/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.lz4.Lz4JNIDriver" />
+        <param name="java.library.path" value="lib/lz4-jni" />
+  </driver>
+  
+  <driver name="Snappy(iq80),1Thread/byte[]" normal="false">
+        <description><div xmlns=""><p>Snappy(iq80),1Thread/byte[]"</p></div></description>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/iq80-snappy/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.iq80snappy.Iq80SnappyDriver"/>
+  </driver>
+-->  
+<!--  
+  <driver name="BZip2/stream">
+        <description><div xmlns=""><p>Commons-compress BZip2 implementation</p></div></description>
+        <param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jakarta/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.bzip2.BZip2Driver" />
+  </driver>
+-->
+	   
+
+<!--
+  <driver name="Snappy(JNI)/block" normal="false">
+        <description><div xmlns=""><p>Snappy-java, block mode</p></div></description>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/snappy/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.snappy.SnappyDriver" />
+  </driver>
+-->
+
+  <!--
+  <driver name="LZF/block" >
+        <description><div xmlns=""><p>Test driver for LZF, block mode</p></div></description>
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/lzf/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.lzf.LzfDriver" />
+  </driver>
+  -->
+
+  
+<!--  
+  <driver name="LZF/stream">
+        <description><div xmlns=""><p>Test driver for LZF, streaming</p></div></description>
+        <param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/lzf/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.lzf.LzfDriver" />
+  </driver>
+
+  <driver name="Gzip/JDK/stream">
+        <description><div xmlns=""><p>Test driver for JDK Gzip/Deflate, streaming
+</p></div></description>
+        <param name="streaming" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.gzip.JDKGzipDriver" />
+      </driver>
+-->
+
+    </driverGroup>
+    <!-- Test cases: name has to match with filename -->
+
+<testCase name='C:alice29.txt' />
+<testCase name='C:kennedy.xls' />
+<testCase name='C:sum' />
+
+<testCase name='U:alice29.txt' />
+<testCase name='U:kennedy.xls' />
+<testCase name='U:sum' />
+
+</testSuite>
