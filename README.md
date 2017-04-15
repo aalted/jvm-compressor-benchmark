@@ -30,11 +30,7 @@ as definitions from the xml file as needed.
 
 # Results
 
-Are available on project [Wiki](../../wiki).
-
-# Codecs included
-
-Codecs are listed on project [Wiki](../../wiki).
+There are some results here: https://github.com/Blosc/jblosc/blob/master/Benchmarks.md
 
 # Test data used
 
@@ -50,7 +46,7 @@ We have tried to make use of existing de-facto standard test suites, including:
 
 To access source, just clone [project](https://github.com/ning/jvm-compressor-benchmark)
 
-To participate in discussions of benchmark suite, results, and other things related to compression performance, please join our [discussion group](http://groups.google.com/group/jvm-compressor-benchmark)
+To participate in discussions of benchmark suite, results, and other things related to compression performance, please join the [discussion group](http://groups.google.com/group/jvm-compressor-benchmark)
 
 # License
 
