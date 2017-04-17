@@ -14,7 +14,7 @@ Round-trip (compress+decompress) test using Silesia data set
 
    <driver name="jblosc,lz4(JNA),4Threads/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,lz4(JNA),4Threads/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreaded"/>
@@ -22,7 +22,7 @@ Round-trip (compress+decompress) test using Silesia data set
 
   <driver name="jblosc,lz4(JNA),1Thread/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,lz4(JNA),1Thread/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriver"/>
