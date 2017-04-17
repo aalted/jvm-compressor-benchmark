@@ -9,7 +9,6 @@ import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
-import com.ning.jcbm.jbloscBuffer.jbloscDriver;
 import com.ning.jcbm.util.DevNullOutputStream;
 import com.sun.japex.Constants;
 import com.sun.japex.JapexDriverBase;
@@ -48,6 +47,7 @@ public abstract class DriverBase extends JapexDriverBase {
 	 * Whether driver should use streaming compression or not (block-based)
 	 */
 	protected boolean _streaming;
+	protected boolean _bytebuffer;
 
 	/**
 	 * We will give a reusable input buffer for compressors to give each a fair
@@ -114,6 +114,7 @@ public abstract class DriverBase extends JapexDriverBase {
 			throw new IllegalArgumentException("No input directory '" + _inputDir.getAbsolutePath() + "'");
 		}
 		_streaming = getBooleanParam("streaming");
+		_bytebuffer = getBooleanParam("bytebuffer");
 	}
 
 	@Override
@@ -183,46 +184,46 @@ public abstract class DriverBase extends JapexDriverBase {
 			switch (_operation) {
 			case COMPRESS:
 				if (_streaming) {
-					if (this instanceof jbloscDriver) {
-						compressBuffer(_uncompressedBB, _compressBufferBB);
-					} else {
-						DevNullOutputStream out = new DevNullOutputStream();
-						compressToStream(_uncompressed, out);
-						out.close();
-						_totalLength = out.length();
-					}
+					DevNullOutputStream out = new DevNullOutputStream();
+					compressToStream(_uncompressed, out);
+					out.close();
+					_totalLength = out.length();
 				} else {
-					_totalLength = compressBlock(_uncompressed, _compressBuffer);
+					if (_bytebuffer) {
+						_totalLength = compressBuffer(_uncompressedBB, _compressBufferBB);
+					} else {
+						_totalLength = compressBlock(_uncompressed, _compressBuffer);
+					}
 				}
 				break;
 			case UNCOMPRESS:
 				if (_streaming) {
-					if (this instanceof jbloscDriver) {
-						uncompressBuffer(_compressedBB, _uncompressBufferBB);
-					} else {
-						ByteArrayInputStream in = new ByteArrayInputStream(_compressed);
-						_totalLength = uncompressFromStream(in, _inputBuffer);
-						in.close();
-					}
+					ByteArrayInputStream in = new ByteArrayInputStream(_compressed);
+					_totalLength = uncompressFromStream(in, _inputBuffer);
+					in.close();
 				} else {
-					_totalLength = uncompressBlock(_compressed, _uncompressBuffer);
+					if (_bytebuffer) {
+						_totalLength = uncompressBuffer(_compressedBB, _uncompressBufferBB);
+					} else {
+						_totalLength = uncompressBlock(_compressed, _uncompressBuffer);
+					}
 				}
 				break;
 			default:
 				if (_streaming) { // just use bogus stream here too
-					if (this instanceof jbloscDriver) {
-						uncompressBuffer(_compressedBB, _uncompressBufferBB);
-					} else {
-						DevNullOutputStream out = new DevNullOutputStream();
-						compressToStream(_uncompressed, out);
-						out.close();
-						ByteArrayInputStream in = new ByteArrayInputStream(_compressed);
-						_totalLength = uncompressFromStream(in, _inputBuffer);
-						in.close();
-					}
+					DevNullOutputStream out = new DevNullOutputStream();
+					compressToStream(_uncompressed, out);
+					out.close();
+					ByteArrayInputStream in = new ByteArrayInputStream(_compressed);
+					_totalLength = uncompressFromStream(in, _inputBuffer);
+					in.close();
 				} else {
-					compressBlock(_uncompressed, _compressBuffer);
-					_totalLength = uncompressBlock(_compressed, _uncompressBuffer);
+					if (_bytebuffer) {
+						_totalLength = uncompressBuffer(_compressedBB, _uncompressBufferBB);
+					} else {
+						compressBlock(_uncompressed, _compressBuffer);
+						_totalLength = uncompressBlock(_compressed, _uncompressBuffer);
+					}
 				}
 			}
 		} catch (Exception e) {
