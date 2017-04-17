@@ -13,61 +13,9 @@ Micro-benchmark for testing performance of compressors on JVM platform
     <driverGroup name="javaDrivers" xmlns="http://www.sun.com/japex/testSuite"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
-	   <!--
-  <driver name="jblosc,snappy(JNA)/block" normal="false">
-        <description><div xmlns=""><p>jblosc,snappy/JNA, block mode</p></div></description>
-        <param name="japex.classPath" value="build/classes"/>
-        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
-        <param name="japex.driverClass" value="com.ning.jcbm.jblosc_snappy.jbloscDriver"/>
-  </driver>
-  -->
-<!--
-  <driver name="jblosc,lz4(JNA),1Thread/byte[]" normal="false">
-        <description><div xmlns=""><p>jblosc,lz4(JNA),1Thread/byte[]</p></div></description>
-		<param name="nthreads" value="1"/>
-		<param name="compressor" value="lz4"/>
-        <param name="japex.classPath" value="build/classes"/>
-        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
-        <param name="japex.driverClass" value="com.ning.jcbm.jblosc.jbloscDriver"/>
-  </driver>
-
-  <driver name="jblosc,lz4(JNA),4Thread/byte[]" normal="false">
-        <description><div xmlns=""><p>jblosc,lz4(JNA),4Thread/byte[]</p></div></description>
-		<param name="nthreads" value="4" />
-		<param name="compressor" value="lz4" />
-        <param name="japex.classPath" value="build/classes"/>
-        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
-        <param name="japex.driverClass" value="com.ning.jcbm.jblosc.jbloscDriver"/>
-  </driver>
--->
-<!--
-   <driver name="Memcpy,1Thread/byte[]" normal="false">
-        <description><div xmlns=""><p>Memcpy,1Thread/byte[]</p></div></description>
-        <param name="japex.classPath" value="build/classes"/>
-        <param name="japex.driverClass" value="com.ning.jcbm.memcpy.MemcpyDriver"/>
-  </driver>
--->
-
-<!--
-   <driver name="jblosc,ztsd(JNA),4Threads/DirectByteBuffer" normal="false">
-        <description><div xmlns=""><p>jblosc,ztsd(JNA),4Threads/DirectByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
-        <param name="japex.classPath" value="build/classes"/>
-        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
-        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedZtsd"/>
-  </driver>
-
-  <driver name="jblosc,ztsd(JNA),1Thread/DirectByteBuffer" normal="false">
-        <description><div xmlns=""><p>jblosc,ztsd(JNA),1Thread/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
-        <param name="japex.classPath" value="build/classes"/>
-        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
-        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverZtsd"/>
-  </driver>
--->
    <driver name="jblosc,zlib(JNA),4Threads/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,zlib(JNA),4Threads/DirectByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedZlib"/>
@@ -75,7 +23,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
 
   <driver name="jblosc,zlib(JNA),1Thread/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,zlib(JNA),1Thread/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverZlib"/>
@@ -83,7 +31,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
 
    <driver name="jblosc,blosclz(JNA),4Threads/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,blosclz(JNA),4Threads/DirectByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedBloscLz"/>
@@ -91,7 +39,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
 
   <driver name="jblosc,blosclz(JNA),1Thread/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,blosclz(JNA),1Thread/DirectByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverBloscLz"/>
@@ -99,7 +47,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
   
    <driver name="jblosc,lz4(JNA),4Threads/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,lz4(JNA),4Threads/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreaded"/>
@@ -107,7 +55,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
 
   <driver name="jblosc,lz4(JNA),1Thread/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,lz4(JNA),1Thread/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriver"/>
@@ -115,7 +63,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
   
    <driver name="jblosc,lz4hc(JNA),4Threads/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,lz4hc(JNA),4Threads/DirectByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreadedLz4hc"/>
@@ -123,7 +71,7 @@ Micro-benchmark for testing performance of compressors on JVM platform
 
   <driver name="jblosc,lz4hc(JNA),1Thread/DirectByteBuffer" normal="false">
         <description><div xmlns=""><p>jblosc,lz4hc(JNA),1Thread/Direct ByteBuffer</p></div></description>
-		<param name="streaming" value="true" />
+		<param name="bytebuffer" value="true" />
         <param name="japex.classPath" value="build/classes"/>
         <param name="japex.classPath" value="lib/jblosc/*.jar"/>
         <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverLz4hc"/>
