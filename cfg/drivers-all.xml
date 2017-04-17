@@ -10,6 +10,23 @@
   xmlns="http://www.sun.com/japex/testSuite"
   xmlns:xi="http://www.w3.org/2001/XInclude"
 >
+
+   <driver name="jblosc,lz4(JNA),4Threads/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4(JNA),4Threads/Direct ByteBuffer</p></div></description>
+		<param name="bytebuffer" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriverThreaded"/>
+  </driver>
+
+  <driver name="jblosc,lz4(JNA),1Thread/DirectByteBuffer" normal="false">
+        <description><div xmlns=""><p>jblosc,lz4(JNA),1Thread/Direct ByteBuffer</p></div></description>
+		<param name="bytebuffer" value="true" />
+        <param name="japex.classPath" value="build/classes"/>
+        <param name="japex.classPath" value="lib/jblosc/*.jar"/>
+        <param name="japex.driverClass" value="com.ning.jcbm.jbloscBuffer.jbloscDriver"/>
+  </driver>
+
   <driver name="LZ4 (JNI)/block" normal="false">
         <description><div xmlns=""><p>LZ4 (JNI), block mode</p></div>
         </description>
