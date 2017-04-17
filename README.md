@@ -1,13 +1,11 @@
 # Overview
 
 This project is focus on building a comprehensive benchmark for comparing time and space efficiency of open source compression codecs on JVM platform.
-Codecs to include need to be accesible from Java (and thereby from any JVM language) via either pure Java interface or JNI; and need to support either basic block mode (byte array in, byte array out), or streaming code (InputStream in, OutputStream out).
+Codecs to include need to be accesible from Java (and thereby from any JVM language) via either pure Java interface or JNI; and need to support either basic block mode (byte array in, byte array out), or streaming code (InputStream in, OutputStream out), or ByteBuffer mode (ByteBuffer in, ByteBuffer out) (the ByteBuffer mode is considered a subcase of blockmode).
 
 Benchmark suite is based on [Japex framework](http://japex.java.net/).
 
 In addition to benchmark itself, we also provide access to set of benchmark results, which can be used for overview of general performance patterns for standard test suites. It is recommended, however, to run tests yourself since they vary depending on platform. In addition, to get more accurate understanding of how results apply to your use case(s), the best thing to do is to collect specific set of test data that reflects your usage, and run tests over this.
-
-For more complete description, checkout out project [Wiki](../../wiki)
 
 # Running tests
 
